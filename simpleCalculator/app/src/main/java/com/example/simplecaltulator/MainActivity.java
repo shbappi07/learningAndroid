@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextOne, editTextTwo;
@@ -35,20 +36,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        
+        try {
 
-        String number1 = editTextOne.getText().toString();
-        String number2 = editTextTwo.getText().toString();
+            String number1 = editTextOne.getText().toString();
+            String number2 = editTextTwo.getText().toString();
 
-        Double num1 = Double.parseDouble(number1);
-        Double num2 = Double.parseDouble(number2);
+            Double num1 = Double.parseDouble(number1);
+            Double num2 = Double.parseDouble(number2);
 
-        if (v.getId()== R.id.addBtnID){
-            double sum = num1+num2;
-            resultTV.setText("Sum Is "+ sum);
-        }if (v.getId()==R.id.subBtnID){
-            double sub = num1-num2;
-            resultTV.setText("Subtraction is "+sub);
+            if (v.getId()== R.id.addBtnID){
+                double sum = num1+num2;
+                resultTV.setText("Sum Is "+ sum);
+            }if (v.getId()==R.id.subBtnID){
+                double sub = num1-num2;
+                resultTV.setText("Subtraction is "+sub);
+            }
+            
+        } catch (Exception e) {
+            Toast.makeText(this, "Please Enter Numbers", Toast.LENGTH_SHORT).show();
         }
+
+        
 
     }
 }
